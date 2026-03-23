@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Guia de Saúde Feminina</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- LOGIN SCREEN -->
+    <section id="login-section" class="screen active">
+        <div class="login-container">
+            <div class="login-header">
+                <i class="ph-fill ph-heartbeat icon-brand"></i>
+                <h1>Bem-vinda</h1>
+                <p>Acesse o seu guia de saúde</p>
+            </div>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <div class="input-wrapper">
+                        <i class="ph ph-envelope-simple"></i>
+                        <input type="email" id="email" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <div class="input-wrapper">
+                        <i class="ph ph-lock-key"></i>
+                        <input type="password" id="password" placeholder="Sua senha" required>
+                    </div>
+                </div>
+
+                <div id="login-error" class="error-msg hidden">
+                    <i class="ph ph-warning-circle"></i> E-mail e senha devem ser iguais.
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    Acessar Módulos <i class="ph-bold ph-arrow-right"></i>
+                </button>
+            </form>
+            
+            <div class="login-footer">
+                <p>Guia Exclusivo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOME SCREEN (MODULES LIST) -->
+    <section id="home-section" class="screen">
+        <header class="app-header">
+            <div class="header-brand">
+                <i class="ph-fill ph-circles-four"></i>
+                <h2>Módulos</h2>
+            </div>
+            <button id="logout-btn" class="btn-icon" aria-label="Sair" title="Sair">
+                <i class="ph ph-sign-out"></i>
+            </button>
+        </header>
+
+        <main class="home-content">
+            <div class="greeting">
+                <h3>Olá,</h3>
+                <p>Selecione um módulo para começar.</p>
+            </div>
+
+            <div class="modules-grid">
+                <!-- Module Card -->
+                <div class="module-card" data-url="https://guia-pratico-para-conviv-xkofaap.gamma.site/">
+                    <div class="module-icon">
+                        <i class="ph-fill ph-book-open"></i>
+                    </div>
+                    <div class="module-info">
+                        <h4>Lidando com a endometriose</h4>
+                        <p>Guia prático e informativo</p>
+                    </div>
+                    <div class="module-arrow">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- MAIN APP SCREEN (EMBED) -->
+    <section id="app-section" class="screen">
+        <header class="app-header">
+            <button id="back-btn" class="btn-icon" aria-label="Voltar" title="Voltar">
+                <i class="ph-bold ph-arrow-left"></i>
+            </button>
+            <div class="header-brand">
+                <i class="ph-fill ph-heartbeat"></i>
+                <h2 id="viewer-title">Guia de Saúde Feminina</h2>
+            </div>
+            <div style="width: 32px"></div> <!-- Spacer for flex alignment -->
+        </header>
+
+        <main class="content-wrapper">
+            <!-- Loader -->
+            <div id="iframe-loader" class="loader-container">
+                <div class="spinner"></div>
+                <p>Carregando conteúdo...</p>
+            </div>
+
+            <!-- Iframe embed -->
+            <iframe id="content-iframe" title="Conteúdo do Módulo" frameborder="0" allowfullscreen></iframe>
+            
+            <!-- Floating Actions -->
+            <div class="floating-actions">
+                <button id="share-btn" class="btn-float" aria-label="Compartilhar" title="Compartilhar">
+                    <i class="ph ph-share-network"></i>
+                </button>
+                <button id="fullscreen-btn" class="btn-float" aria-label="Tela Cheia" title="Tela Cheia">
+                    <i class="ph ph-corners-out"></i>
+                </button>
+            </div>
+        </main>
+    </section>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
