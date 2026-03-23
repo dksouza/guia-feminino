@@ -10,7 +10,6 @@ const DOM = {
     
     loginForm: document.getElementById('login-form'),
     emailInput: document.getElementById('email'),
-    passwordInput: document.getElementById('password'),
     loginError: document.getElementById('login-error'),
     
     logoutBtn: document.getElementById('logout-btn'),
@@ -61,7 +60,6 @@ function setupEventListeners() {
 
     // Form clear errors
     DOM.emailInput.addEventListener('input', hideError);
-    DOM.passwordInput.addEventListener('input', hideError);
 }
 
 // Authentication
@@ -79,18 +77,16 @@ function handleLogin(e) {
     e.preventDefault();
     
     const email = DOM.emailInput.value.trim();
-    const password = DOM.passwordInput.value.trim();
     
-    if (!email || !password) return;
-    
-    if (email === password) {
-        localStorage.setItem(APP_DATA_KEY, 'true');
-        hideError();
-        DOM.loginForm.reset();
-        showHomeScreen();
-    } else {
+    if (!email) {
         showError();
+        return;
     }
+    
+    localStorage.setItem(APP_DATA_KEY, 'true');
+    hideError();
+    DOM.loginForm.reset();
+    showHomeScreen();
 }
 
 function handleLogout() {
@@ -149,13 +145,11 @@ function resetViewer() {
 function showError() {
     DOM.loginError.classList.remove('hidden');
     DOM.emailInput.parentElement.style.borderColor = 'var(--error-color)';
-    DOM.passwordInput.parentElement.style.borderColor = 'var(--error-color)';
 }
 
 function hideError() {
     DOM.loginError.classList.add('hidden');
     DOM.emailInput.parentElement.style.borderColor = 'var(--border-color)';
-    DOM.passwordInput.parentElement.style.borderColor = 'var(--border-color)';
 }
 
 // Iframe Loading
